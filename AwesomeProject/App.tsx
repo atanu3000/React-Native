@@ -1,17 +1,34 @@
-import React from 'react';
+import React from "react";
 
-import {View, Text, SafeAreaView} from 'react-native';
+import {
+  Text,
+  View,
+  StyleSheet,
+  useColorScheme,
+} from "react-native";
 
 function App() {
+  const isDarkMode = useColorScheme() === 'dark';
   return (
-    <SafeAreaView>
-      <View>
-        <Text>Hello World!</Text>
-        <Text style={{color: "green"}}>I'm Atanu</Text>
-        <Text>Now I'm building my First React Native App</Text>
+      <View style={[styles.container, isDarkMode ? styles.whiteMode : styles.darkMode]}>
+        <Text style={isDarkMode ? styles.whiteMode : styles.darkMode}>Welcome to React Native!</Text>
       </View>
-    </SafeAreaView>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  whiteMode: {
+    color: '#FFF',
+    backgroundColor: '#222',
+  },
+  darkMode: {
+    color: '#000',
+    backgroundColor: '#FFF',
+  },
+})
 
 export default App;

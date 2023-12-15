@@ -11,7 +11,7 @@ function AppPro() : JSX.Element{
     const isDarkMode = useColorScheme() === "dark";
     return(
         <View style={[styles.container, isDarkMode ? {backgroundColor: '#222'} : {backgroundColor: '#fff'}]}>
-            <Text style={[styles.textStyle, isDarkMode ? styles.whiteText: styles.darkText]}>Say, hello 👋</Text>
+            <Text style={[styles.textStyle, isDarkMode ? styles.whiteText: styles.darkText]}>Say, Hello 👋</Text>
         </View>
     )
 }
