@@ -1,34 +1,21 @@
-import React from "react";
+import { SafeAreaView, ScrollView, StyleSheet, Text, View } from 'react-native'
+import React from 'react'
+import FlatCards from './components/FlatCards'
+import ElevatedCards from './components/ElevatedCards'
+import TrandingPlaces from './components/TrandingPlaces'
 
-import {
-  Text,
-  View,
-  StyleSheet,
-  useColorScheme,
-} from "react-native";
-
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+const App = () => {
   return (
-      <View style={[styles.container, isDarkMode ? styles.whiteMode : styles.darkMode]}>
-        <Text style={isDarkMode ? styles.whiteMode : styles.darkMode}>Welcome to React Native!</Text>
-      </View>
-  );
+    <SafeAreaView>
+      <ScrollView>
+      <FlatCards />
+      <ElevatedCards />
+      <TrandingPlaces />
+      </ScrollView>
+    </SafeAreaView>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  whiteMode: {
-    color: '#FFF',
-    backgroundColor: '#222',
-  },
-  darkMode: {
-    color: '#000',
-    backgroundColor: '#FFF',
-  },
-})
+export default App
 
-export default App;
+const styles = StyleSheet.create({})
