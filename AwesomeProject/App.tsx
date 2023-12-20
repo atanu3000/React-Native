@@ -5,6 +5,7 @@ import ElevatedCards from './components/ElevatedCards'
 import TrandingPlaces from './components/TrandingPlaces'
 import ActionCard from './components/ActionCard'
 import ContactList from './components/ContactList'
+import PersonalInfo from './components/PersonalInfo'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
       <TrandingPlaces />
       <ContactList />
       <ActionCard />
+      <PersonalInfo />
       </ScrollView>
     </SafeAreaView>
   )
