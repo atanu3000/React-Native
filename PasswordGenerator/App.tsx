@@ -18,7 +18,7 @@ const PasswordSchema = Yup.object().shape({
   passwordLength: Yup.number()
     .min(4, 'Should be at least 4 characters')
     .max(16, 'Should not be more than 16 characters')
-    .required('Length is required'),
+    .required('Length is required')
 });
 
 export default function App() {
