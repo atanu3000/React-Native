@@ -73,12 +73,14 @@ If you can't get this to work, see the [Troubleshooting](https://reactnative.dev
 -   Here's the detail view how to publish your application to [Google Play Store](https://reactnative.dev/docs/signed-apk-android)
 
 -   Publish an apk and install it to your phone :
-    -   On Windows keytool must be run from C:\Program Files\Java\jdkx.x.x_x\bin, as administrator.
+    -   On Windows keytool must be run from `C:\Program Files\Java\jdkx.x.x_x\bin`, as `administrator`.
     ```bash
     keytool -genkeypair -v -storetype PKCS12 -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
     ```
 
-    `NOTICE:` This is important to keep in mind that the password should remember for later use.
+    `NOTICE:` This is important to keep in mind that the password should remember for later use. It command generates the keystore as a file called `my-upload-key.keystore` in the C:\Program Files\Java\jdkx.x.x_x\bin.
+
+    -   Copy the `my-upload-key.keystore` file to the `./android/app/` directory.
     
     -   Setting up Gradle variables :
    
