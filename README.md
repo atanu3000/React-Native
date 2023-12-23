@@ -77,6 +77,9 @@ If you can't get this to work, see the [Troubleshooting](https://reactnative.dev
     ```bash
     keytool -genkeypair -v -storetype PKCS12 -keystore my-upload-key.keystore -alias my-key-alias -keyalg RSA -keysize 2048 -validity 10000
     ```
+
+    `NOTICE:` This is important to keep in mind that the password should remember for later use.
+    
     -   Setting up Gradle variables :
    
          1. Place the my-upload-key.keystore file under the android/app directory in your project folder.
