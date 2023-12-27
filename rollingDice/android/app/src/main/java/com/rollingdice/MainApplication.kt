@@ -1,5 +1,6 @@
 package com.rollingdice
 
+import com.mkuczera.RNReactNativeHapticFeedbackPackage;
 import android.app.Application
 import com.facebook.react.PackageList
 import com.facebook.react.ReactApplication
