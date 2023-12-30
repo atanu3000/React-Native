@@ -3,19 +3,18 @@ import React, {useState} from 'react';
 import {
   FlatList,
   Pressable,
-  SafeAreaView,
-  ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   TextInput,
-  useColorScheme,
   View,
 } from 'react-native';
 
 import {currencyByRupee} from './constant';
 import CurrencyBtn from './Components/CurrencyBtn';
 import Snackbar from 'react-native-snackbar';
+import CurrencyBar from './Components/CurrencyBar';
+import Icons from './Components/Icons';
 
 function App(): JSX.Element {
   const [inputValue, setInputValue] = useState('');
@@ -27,6 +26,7 @@ function App(): JSX.Element {
     flag: '🇺🇸',
     symbol: '$',
   });
+  const [renderType, setRenderType] = useState('bar-type');
 
   const buttonPressed = (targetValue: Currency, amount: string) => {
     if (!amount) {
@@ -38,7 +38,7 @@ function App(): JSX.Element {
     }
 
     const inputAmount = parseFloat(amount);
-    if (!isNaN(inputAmount )) {
+    if (!isNaN(inputAmount)) {
       const convertedAmount = inputAmount * targetValue.value;
       const result = `${targetValue.symbol} ${convertedAmount.toFixed(2)}`;
       setResultValue(result);
@@ -53,7 +53,7 @@ function App(): JSX.Element {
   };
 
   const handleInputChange = (amount: string) => {
-    if(amount.trim().length == 0) {
+    if (amount.trim().length == 0) {
       buttonPressed(selectedCurrency, '0');
     }
     setInputValue(amount);
@@ -64,40 +64,77 @@ function App(): JSX.Element {
     <>
       <StatusBar backgroundColor={'#a10006'} />
       <View style={styles.container}>
+        <View style={styles.topBar}>
+          <Text style={styles.headingTxt}>Converter</Text>
+          <View style={styles.typeContainer}>
+            <Pressable onPress={() => setRenderType('box-type')}>
+              <View
+                style={[
+                  styles.renderType,
+                  renderType === 'box-type' && styles.typeSelected,
+                ]}>
+                <Icons name="box" />
+              </View>
+            </Pressable>
+            <Pressable onPress={() => setRenderType('bar-type')}>
+              <View
+                style={[
+                  styles.renderType,
+                  renderType === 'bar-type' && styles.typeSelected,
+                ]}>
+                <Icons name="bar" />
+              </View>
+            </Pressable>
+          </View>
+        </View>
         <View style={styles.topContainer}>
           <View style={styles.rupeesContainer}>
             <Text style={[styles.rupee, styles.inputTxt]}>₹</Text>
             <TextInput
               style={styles.inputTxt}
-              maxLength={14}
+              maxLength={10}
               value={inputValue}
               clearButtonMode="always"
               onChangeText={handleInputChange}
               keyboardType="number-pad"
               placeholder="Enter a value in rupees"></TextInput>
           </View>
-          {resultValue && <Text style={styles.resultTxt}>{resultValue}</Text>}
+          {resultValue && renderType === 'box-type' && (
+            <Text style={styles.resultTxt}>{resultValue}</Text>
+          )}
         </View>
         <View style={styles.bottomContainer}>
-          <FlatList
-            numColumns={2}
-            data={currencyByRupee}
-            keyExtractor={item => item.name}
-            renderItem={({item}) => (
-              <Pressable
-                style={[
-                  styles.button,
-                  targetCurrency === item.name && styles.selected,
-                ]}
-                onPress={() => {
-                  buttonPressed(item, inputValue);
-                  setSelectedCurrency(item);
-                  // setIsGenerated(true);
-                }}>
-                <CurrencyBtn {...item} />
-              </Pressable>
-            )}
-          />
+          {renderType === 'box-type' ? (
+            <FlatList
+              key={'boxTypeFlatList'}
+              numColumns={2}
+              data={currencyByRupee}
+              keyExtractor={item => item.name}
+              renderItem={({item}) => (
+                <Pressable
+                  style={[
+                    styles.button,
+                    targetCurrency === item.name && styles.selected,
+                  ]}
+                  onPress={() => {
+                    buttonPressed(item, inputValue);
+                    setSelectedCurrency(item);
+                  }}>
+                  <CurrencyBtn {...item} />
+                </Pressable>
+              )}
+            />
+          ) : (
+            <FlatList
+              key={'barTypeFlatList'}
+              numColumns={1}
+              data={currencyByRupee}
+              keyExtractor={item => item.name}
+              renderItem={({item}) => (
+                <CurrencyBar inputValue={inputValue} {...item} />
+              )}
+            />
+          )}
         </View>
       </View>
     </>
@@ -109,19 +146,54 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#a10006',
   },
+  topBar: {
+    flex: 1,
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+    width: '100%',
+  },
+  typeContainer: {
+    flexDirection: 'row',
+    marginTop: 12,
+    backgroundColor: '#ffffff55',
+    borderRadius: 10,
+    height: 40,
+    alignItems: 'center',
+    overflow: 'hidden',
+  },
+  renderType: {
+    paddingHorizontal: 10,
+    height: '100%',
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  typeSelected: {
+    backgroundColor: '#ffffff88',
+  },
+  headingTxt: {
+    color: '#f6f6f4',
+    fontSize: 24,
+    paddingVertical: 10,
+    fontWeight: '400',
+  },
   topContainer: {
+    position: 'absolute',
+    top: 48,
+    width: '100%',
+    marginTop: 20,
     flex: 1,
     alignItems: 'center',
     justifyContent: 'space-evenly',
   },
   inputTxt: {
-    color: '#ffffff',
+    color: '#f6f6f4',
   },
   resultTxt: {
-    color: '#ffffff',
-
+    color: '#f6f6f4',
+    paddingTop: 10,
     fontSize: 32,
-    // color: '#000000',
     fontWeight: '800',
   },
   rupee: {
@@ -147,7 +219,9 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
   },
   bottomContainer: {
-    // flex: 3,
+    position: 'absolute',
+    width: '100%',
+    bottom: 0,
     backgroundColor: '#ffffff',
     height: '65%',
     padding: 10,
@@ -158,7 +232,7 @@ const styles = StyleSheet.create({
     flex: 1,
     margin: 6,
     borderRadius: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#fdfde9',
     elevation: 2,
     shadowOffset: {
       width: 1,
