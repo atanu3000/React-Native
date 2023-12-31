@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
   flag: {
     fontSize: 28,
     color: 'white',
-    marginVertical: 10,
+    marginVertical: 6,
   },
   contry: {
     fontSize: 14,

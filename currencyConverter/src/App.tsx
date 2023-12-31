@@ -241,6 +241,7 @@ const styles = StyleSheet.create({
     shadowColor: '#333',
     shadowOpacity: 0.1,
     shadowRadius: 1,
+    paddingBottom: 8,
   },
   selected: {
     backgroundColor: '#ffeaa7',

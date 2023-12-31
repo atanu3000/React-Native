@@ -1,5 +1,4 @@
-import { View, Text } from 'react-native'
-import React, { PropsWithChildren } from 'react'
+import { PropsWithChildren } from 'react'
 
 import Icon from 'react-native-vector-icons/FontAwesome'
 
