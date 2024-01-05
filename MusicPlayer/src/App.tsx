@@ -1,12 +1,44 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React from 'react'
+import {
+  ActivityIndicator,
+  SafeAreaView,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
+import React, {useEffect, useState} from 'react';
 
-export default function App() {
+import {setupPlayer, addTrack} from '../musicPlayerService';
+
+export default function App(): JSX.Element {
+  const [isPlayerReady, setIsPlayerReady] = useState(false);
+
+  async function setup() {
+    let isSetup = await setupPlayer();
+
+    if (isSetup) {
+      await addTrack();
+    }
+
+    setIsPlayerReady(isSetup);
+  }
+
+  useEffect(() => {
+    setup();
+  }, []);
+
+  if (!isPlayerReady) {
+    return (
+      <SafeAreaView>
+        <ActivityIndicator />
+      </SafeAreaView>
+    );
+  }
+
   return (
     <View>
       <Text>Music Player App</Text>
     </View>
-  )
+  );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});
