@@ -8,7 +8,7 @@ export const playListData : Track[] = [
         album: 'Champagne Talk',
         artwork:
           'https://c.saavncdn.com/734/Champagne-Talk-Hindi-2022-20221008011951-500x500.jpg',
-        url: require('./assets/audio/Maan Meri Jaan _ Official Music Video _ Champagne Talk _ King(MP3_320K).mp3'),
+        url: require('./assets/audio/Maan_Meri_Jaan.mp3'),
       },
       {
         id: 2,
@@ -17,7 +17,7 @@ export const playListData : Track[] = [
         album: 'Bhediya',
         artwork:
           'https://c.saavncdn.com/815/Bhediya-Hindi-2023-20230927155213-500x500.jpg',
-        url: require('./assets/audio/Apna Bana Le - Bhediya _ Varun Dhawan_ Kriti Sanon_ Sachin-Jigar_ Arijit Singh_ Amitabh Bhattacharya(MP3_320K).mp3'),
+        url: require('./assets/audio/Apna_Bana_Le.mp3'),
       },
       {
         id: 3,
@@ -26,7 +26,7 @@ export const playListData : Track[] = [
         album: 'Brahmastra',
         artwork:
           'https://c.saavncdn.com/191/Kesariya-From-Brahmastra-Hindi-2022-20220717092820-500x500.jpg',
-        url: require('./assets/audio/Kesariya - Brahmāstra _ Ranbir Kapoor _ Alia Bhatt _ Pritam _ Arijit Singh _ Amitabh Bhattacharya(MP3_320K).mp3'),
+        url: require('./assets/audio/Kesariya.mp3'),
       },
       {
         id: 4,
@@ -34,8 +34,8 @@ export const playListData : Track[] = [
         artist: 'Armaan Malik',
         album: 'M.S. Dhoni - The Untold Story',
         artwork:
-          'https://c.saavncdn.com/328/Pal-Pal-Dil-Ke-Paas-Hindi-2019-20200420150444-500x500.jpg',
-        url: require('./assets/audio/JAB TAK Full Video _ M.S. DHONI -THE UNTOLD STORY _ Armaan Malik_ Amaal Mallik _Sushant Singh Rajput(MP3_320K).mp3'),
+          'https://c.saavncdn.com/569/M-S-Dhoni-The-Untold-Story-3-Hindi-2016-500x500.jpg',
+        url: require('./assets/audio/JAB_TAK.mp3'),
       },
       {
         id: 5,
@@ -44,7 +44,7 @@ export const playListData : Track[] = [
         album: 'Ramaiya Vastavaiya',
         artwork:
           'https://c.saavncdn.com/807/Pathaan-Hindi-2022-20221222104158-500x500.jpg',
-        url: require('./assets/audio/Rang Jo Lagyo _ Atif Aslam _ Shreya Ghoshal _ Ramaiya Vastavaiya _ 2013(MP3_160K).mp3'),
+        url: require('./assets/audio/Rang_Jo_Lagyo.mp3'),
       },
       {
         id: 6,
@@ -53,7 +53,7 @@ export const playListData : Track[] = [
         album: 'Bolna Mahi Bolna',
         artwork:
           'https://i.ytimg.com/vi/O4NQQlMg6qM/hqdefault.jpg?sqp=-oaymwEmCOADEOgC8quKqQMa8AEB-AH-BIAC6AKKAgwIABABGHIgSignMA8=&rs=AOn4CLDf0N-ac8QqgUK-sl26p-czITXs8Q',
-        url: require('./assets/audio/tere liye aaya main toh tere sang jaana(MP3_320K).mp3'),
+        url: require('./assets/audio/tere_liye_aaya_main_toh.mp3'),
       },
       {
         id: 7,
@@ -62,6 +62,6 @@ export const playListData : Track[] = [
         album: 'Shaadi Mein Zaroor Aana',
         artwork:
           'https://c.saavncdn.com/861/Shaadi-Mein-Zaroor-Aana-Hindi-2017-20171024101945-500x500.jpg',
-        url: require('./assets/audio/Tu Banja Gali Benaras Ki - Radio Edit _ Asees Kaur _ Shaadi Mein Zaroor Aana _Rajkummar Rao_ Kriti K(MP3_160K).mp3'),
+        url: require('./assets/audio/Tu_Banja_Gali_Benaras_Ki.mp3'),
       },
 ];
