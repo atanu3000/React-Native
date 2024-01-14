@@ -29,6 +29,7 @@ const Home = ({navigation}: HomeProps) => {
             <ProductItem product={item} />
           </Pressable>
         )}
+        showsVerticalScrollIndicator={false}
       />
     </View>
   );
